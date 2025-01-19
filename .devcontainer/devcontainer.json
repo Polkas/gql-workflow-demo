@@ -6,7 +6,7 @@
       "version": "latest"
     }
   },
-  "postCreateCommand": "docker-compose up -d",
+  "postCreateCommand": "sudo docker-compose up -d",
   "customizations": {
     "vscode": {
       "extensions": [
