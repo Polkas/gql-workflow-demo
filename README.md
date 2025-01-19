@@ -38,7 +38,7 @@ This repository uses a Dockerized Neo4j instance. The setup is pre-configured in
 
 The `/examples` folder contains the following scripts:
 - `schema.gql`: Defines the graph schema.
-- `schema_properties.gql`: Defines the graph schema.
+- `schema_properties.gql`: On how to access the graph schema.
 - `data.gql`: Inserts data into the graph.
 - `queries.gql`: Includes examples for querying data and running algorithms.
 
