@@ -1,19 +1,22 @@
 // Neo4j automatically creates and maintains a schema for the graph as you define constraints or add data.
-// Match the existing nodes and create proper relationships
-MATCH (Alice:Person {name: "Alice"}),
-      (Bob:Person {name: "Bob"}),
-      (Charlie:Person {name: "Charlie"}),
-      (David:Person {name: "David"}),
-      (Eve:Person {name: "Eve"}),
-      (Frank:Person {name: "Frank"}),
-      (Grace:Person {name: "Grace"})
+// Create nodes and relationships in one query
+CREATE 
+  (Alice:Person {name: "Alice", age: 30}),
+  (Bob:Person {name: "Bob", age: 35}),
+  (Charlie:Person {name: "Charlie", age: 25}),
+  (David:Person {name: "David", age: 28}),
+  (Eve:Person {name: "Eve", age: 22}),
+  (Frank:Person {name: "Frank", age: 40}),
+  (Grace:Person {name: "Grace", age: 29}),
 
-CREATE (Alice)-[:FRIEND {since: date("2020-01-01")}]->(Bob),
-       (Alice)-[:FRIEND {since: date("2021-06-15")}]->(Charlie),
-       (Alice)-[:FRIEND {since: date("2022-05-20")}]->(David),
-       (Grace)-[:FRIEND {since: date("2021-09-30")}]->(Alice),
-       (Bob)-[:FRIEND {since: date("2023-01-10")}]->(Eve),
-       (Charlie)-[:FRIEND {since: date("2022-08-15")}]->(Grace),
-       (David)-[:FRIEND {since: date("2023-04-01")}]->(Eve),
-       (Eve)-[:FRIEND {since: date("2023-06-05")}]->(Frank),
-       (Frank)-[:FRIEND {since: date("2022-12-25")}]->(Grace);
+  // Relationships
+  (Alice)-[:FRIEND {since: date("2020-01-01")}]->(Bob),
+  (Alice)-[:FRIEND {since: date("2021-06-15")}]->(Charlie),
+  (Alice)-[:FRIEND {since: date("2022-05-20")}]->(David),
+  (Grace)-[:FRIEND {since: date("2021-09-30")}]->(Alice),
+  (Bob)-[:FRIEND {since: date("2023-01-10")}]->(Eve),
+  (Charlie)-[:FRIEND {since: date("2022-08-15")}]->(Grace),
+  (David)-[:FRIEND {since: date("2023-04-01")}]->(Eve),
+  (Eve)-[:FRIEND {since: date("2023-06-05")}]->(Frank),
+  (Frank)-[:FRIEND {since: date("2022-12-25")}]->(Grace);
+
