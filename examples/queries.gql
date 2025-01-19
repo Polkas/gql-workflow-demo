@@ -1,14 +1,29 @@
--- Query: Friends of Alice
-MATCH (a:Person)-[f:FRIEND]->(friend:Person)
-WHERE a.name = "Alice"
-RETURN friend.name AS Friend, f.since AS Since;
+// List All People in the Network
+MATCH (p:Person)
+RETURN p.name AS Name, p.age AS Age
+ORDER BY p.name;
 
--- Query: Mutual Friends
-MATCH (a:Person)-[:FRIEND]->(common:Person)<-[:FRIEND]-(b:Person)
-WHERE a.name = "Alice" AND b.name = "Bob"
-RETURN common.name AS MutualFriend;
+// Find All Friends of Alice
+MATCH (a:Person {name: "Alice"})-[f:FRIEND]->(friend:Person)
+RETURN friend.name AS Friend, friend.age AS Age, f.since AS Since
+ORDER BY f.since;
 
--- Query: Shortest Path
-MATCH path = shortestPath((a:Person)-[:FRIEND*]->(c:Person))
-WHERE a.name = "Alice" AND c.name = "Charlie"
-RETURN path;
+// Find People Who Became Friends in 2023
+MATCH (p1:Person)-[f:FRIEND]->(p2:Person)
+WHERE f.since.year = 2023
+RETURN p1.name AS Person1, p2.name AS Person2, f.since AS Since
+ORDER BY f.since;
+
+// Find Mutual Friends of Alice and Bob
+MATCH (a:Person {name: "Alice"})-[:FRIEND]->(common:Person)<-[:FRIEND]-(b:Person {name: "Bob"})
+RETURN common.name AS MutualFriend, common.age AS Age
+ORDER BY common.name;
+
+// Find the Shortest Path Between Alice and Frank
+MATCH path = shortestPath((a:Person {name: "Alice"})-[:FRIEND*]-(b:Person {name: "Frank"}))
+RETURN [n IN nodes(path) | n.name] AS Path, length(path) AS PathLength;
+
+// List All Relationships and Their Details
+MATCH (p1:Person)-[f:FRIEND]->(p2:Person)
+RETURN p1.name AS Person1, p2.name AS Person2, f.since AS Since
+ORDER BY f.since;

@@ -1,9 +1,3 @@
-CREATE GRAPH schema SocialNetwork {
-    TYPE Person {
-        name STRING,
-        age INT
-    }
-    TYPE FRIEND {
-        since DATE
-    }
-}
+// Neo4j automatically creates and maintains a schema for the graph as you define constraints or add data.
+// schema constraint to ensure that the name property for nodes with the label Person is unique
+REATE CONSTRAINT FOR (p:Person) REQUIRE p.name IS UNIQUE;

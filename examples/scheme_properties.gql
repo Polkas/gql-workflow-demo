@@ -1,0 +1,15 @@
+
+// List All Node Labels
+CALL db.labels();
+
+// List All Relationship Types
+CALL db.relationshipTypes();
+
+// List All Properties on Nodes and Relationships
+CALL db.schema.nodeTypeProperties();
+
+// Relationship Properties
+CALL db.schema.relationshipTypeProperties();
+
+// Visualize the Schema
+CALL db.schema.visualization();

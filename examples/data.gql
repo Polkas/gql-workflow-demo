@@ -1,8 +1,19 @@
-CREATE GRAPH INSTANCE mySocialNetwork OF SocialNetwork {
-    (Alice:Person {name: "Alice", age: 30}),
-    (Bob:Person {name: "Bob", age: 35}),
-    (Charlie:Person {name: "Charlie", age: 25}),
-    (Alice)-[:FRIEND {since: DATE("2020-01-01")}]-(Bob),
-    (Alice)-[:FRIEND {since: DATE("2021-06-15")}]-(Charlie),
-    (Bob)-[:FRIEND {since: DATE("2019-05-10")}]-(Charlie)
-}
+// Neo4j automatically creates and maintains a schema for the graph as you define constraints or add data.
+// Match the existing nodes and create proper relationships
+MATCH (Alice:Person {name: "Alice"}),
+      (Bob:Person {name: "Bob"}),
+      (Charlie:Person {name: "Charlie"}),
+      (David:Person {name: "David"}),
+      (Eve:Person {name: "Eve"}),
+      (Frank:Person {name: "Frank"}),
+      (Grace:Person {name: "Grace"})
+
+CREATE (Alice)-[:FRIEND {since: date("2020-01-01")}]->(Bob),
+       (Alice)-[:FRIEND {since: date("2021-06-15")}]->(Charlie),
+       (Alice)-[:FRIEND {since: date("2022-05-20")}]->(David),
+       (Grace)-[:FRIEND {since: date("2021-09-30")}]->(Alice),
+       (Bob)-[:FRIEND {since: date("2023-01-10")}]->(Eve),
+       (Charlie)-[:FRIEND {since: date("2022-08-15")}]->(Grace),
+       (David)-[:FRIEND {since: date("2023-04-01")}]->(Eve),
+       (Eve)-[:FRIEND {since: date("2023-06-05")}]->(Frank),
+       (Frank)-[:FRIEND {since: date("2022-12-25")}]->(Grace);

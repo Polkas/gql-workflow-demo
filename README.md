@@ -28,56 +28,26 @@ This repository uses a Dockerized Neo4j instance. The setup is pre-configured in
 
 1. Once the Codespace is running, verify that the Neo4j container is active:
    ```bash
-   docker ps
+   sudo docker ps
    ```
-2. Open the Neo4j browser:
-   - Navigate to `http://localhost:7474` in the Codespace's browser.
-   - Log in using the default credentials:
-     - **Username**: `neo4j`
-     - **Password**: `test`.
-
+2. Run the Neo4j:
+   - `sudo docker exec -it gql_neo4j bash`
+   - `cypher-shell -u neo4j -p strongpassword`
+   
 ### 4. Run the GQL Examples
 
 The `/examples` folder contains the following scripts:
 - `schema.gql`: Defines the graph schema.
+- `schema_properties.gql`: Defines the graph schema.
 - `data.gql`: Inserts data into the graph.
 - `queries.gql`: Includes examples for querying data and running algorithms.
 
 #### Steps to Run
 
-1. Copy the contents of `schema.gql` into the Neo4j browser query editor and run it.
+1. Run the contents of `schema.gql` in the Neo4j.
 2. Repeat the process for `data.gql` to populate the graph.
 3. Execute the queries in `queries.gql` to explore the graph data.
 
----
-
-## Example Queries
-
-### Query: Friends of Alice
-
-Retrieve all friends of Alice and the dates they became friends:
-```gql
-MATCH (a:Person)-[f:FRIEND]->(friend:Person)
-WHERE a.name = "Alice"
-RETURN friend.name AS Friend, f.since AS Since;
-```
-
-### Query: Mutual Friends
-
-Find mutual friends between Alice and Bob:
-```gql
-MATCH (a:Person)-[:FRIEND]->(common:Person)<-[:FRIEND]-(b:Person)
-WHERE a.name = "Alice" AND b.name = "Bob"
-RETURN common.name AS MutualFriend;
-```
-
-### Query: Shortest Path
-Find the shortest path between Alice and Charlie:
-```gql
-MATCH path = shortestPath((a:Person)-[:FRIEND*]->(c:Person))
-WHERE a.name = "Alice" AND c.name = "Charlie"
-RETURN path;
-```
 
 ---
 
