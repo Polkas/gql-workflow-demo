@@ -1,0 +1,9 @@
+CREATE GRAPH schema SocialNetwork {
+    TYPE Person {
+        name STRING,
+        age INT
+    }
+    TYPE FRIEND {
+        since DATE
+    }
+}

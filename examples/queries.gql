@@ -1,0 +1,14 @@
+-- Query: Friends of Alice
+MATCH (a:Person)-[f:FRIEND]->(friend:Person)
+WHERE a.name = "Alice"
+RETURN friend.name AS Friend, f.since AS Since;
+
+-- Query: Mutual Friends
+MATCH (a:Person)-[:FRIEND]->(common:Person)<-[:FRIEND]-(b:Person)
+WHERE a.name = "Alice" AND b.name = "Bob"
+RETURN common.name AS MutualFriend;
+
+-- Query: Shortest Path
+MATCH path = shortestPath((a:Person)-[:FRIEND*]->(c:Person))
+WHERE a.name = "Alice" AND c.name = "Charlie"
+RETURN path;

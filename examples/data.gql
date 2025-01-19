@@ -1,0 +1,8 @@
+CREATE GRAPH INSTANCE mySocialNetwork OF SocialNetwork {
+    (Alice:Person {name: "Alice", age: 30}),
+    (Bob:Person {name: "Bob", age: 35}),
+    (Charlie:Person {name: "Charlie", age: 25}),
+    (Alice)-[:FRIEND {since: DATE("2020-01-01")}]-(Bob),
+    (Alice)-[:FRIEND {since: DATE("2021-06-15")}]-(Charlie),
+    (Bob)-[:FRIEND {since: DATE("2019-05-10")}]-(Charlie)
+}
