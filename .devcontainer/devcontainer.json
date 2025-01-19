@@ -6,7 +6,7 @@
       "version": "latest"
     }
   },
-  "postCreateCommand": "sudo docker-compose up -d",
+  "postCreateCommand": "sudo docker-compose -f .devcontainer/docker-compose.yml up -d",
   "customizations": {
     "vscode": {
       "extensions": [
