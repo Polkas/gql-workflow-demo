@@ -1,6 +1,6 @@
-# GQL Workflow Demo
+# graphdb playground
 
-This repository demonstrates how to work with Graph Query Language (GQL) using a Neo4j database. The setup includes defining schemas, inserting data, running queries, and performing graph algorithms in a GitHub Codespace.
+This repository demonstrates how to work with Graph DB such as a Neo4j database. The setup includes defining schemas, inserting data, running queries, and performing graph algorithms in a GitHub Codespace.
 
 ## Features
 
