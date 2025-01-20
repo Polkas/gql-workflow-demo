@@ -2,6 +2,16 @@
 
 This repository demonstrates how to work with Graph DB such as a Neo4j database. The setup includes defining schemas, inserting data, running queries, and performing graph algorithms in a GitHub Codespace.
 
+[The Neo4j Cypher now accommodates most mandatory GQL features and a substantial portion of its optional ones.](https://neo4j.com/docs/cypher-manual/current/appendix/gql-conformance/)
+Users should, therefore, only expect minimal differences between crafting queries in Cypher and GQL. 
+For example, the following query is valid in both languages:  
+
+```gql
+MATCH (a:Actor)-[:ACTED_IN]->(m:Movie)
+WHERE a.name = 'Tom Hanks'
+RETURN m.title
+```     
+
 ## Features
 
 - **Graph Schema**: Define and model nodes and relationships.
